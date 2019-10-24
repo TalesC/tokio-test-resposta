@@ -6,6 +6,8 @@ import javax.validation.Valid;
 
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
@@ -23,8 +25,9 @@ public class CustomerService {
 		this.repository = repository;
 	}
 
-	public List<Customer> findAll() {
-		return repository.findAllByOrderByNameAsc();
+	public List<Customer> findAll(Integer page, Integer itens) {
+		Pageable pageItens = PageRequest.of(page, itens);
+		return repository.findAllByOrderByNameAsc(pageItens);
 	}
 
 	public Customer findById(Long id) {

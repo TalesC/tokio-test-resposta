@@ -37,9 +37,9 @@ public class CustomerController {
 		this.service = service;
 	}
 
-	@GetMapping
-	public List<Customer> findAll() {
-		return service.findAll();
+	@GetMapping("/pageable/{page}/{itens}")
+	public List<Customer> findAll(@PathVariable Integer page, @PathVariable Integer itens) {
+		return service.findAll(page, itens);
 	}
 
 	@GetMapping("/{id}")
