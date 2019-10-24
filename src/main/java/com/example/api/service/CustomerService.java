@@ -41,6 +41,11 @@ public class CustomerService {
 		BeanUtils.copyProperties(customer, existente, "id");
 		return repository.save(existente);
 	}
+
+	public void delete(Long id) {
+		this.findById(id);
+		repository.deleteById(id);
+	}
 	
 
 }
