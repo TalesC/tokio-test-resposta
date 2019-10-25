@@ -13,17 +13,14 @@ public class AddressService {
 	
 	@Autowired
 	private AddressRepository repository;
-	
-	@Autowired
-	private CustomerService service;
+
 	
 	public List<Address> findAll() {
 		return repository.findAll();
 	}
 	
 	public List<Address> findByCustomer(Long idCustumer) {
-		service.findById(idCustumer);
-		return repository.findByCustomer(idCustumer);
+		return repository.findByCustomerId(idCustumer);
 	}
 
 	public Address save(Address address) {

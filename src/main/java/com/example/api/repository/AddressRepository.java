@@ -10,7 +10,7 @@ import com.example.api.domain.Address;
 @Repository
 public interface AddressRepository extends JpaRepository<Address, Long> {
 	
-	List<Address> findByCustomer(Long idCustomer);
+	List<Address> findByCustomerId(Long idCustomer);
 	
 	
 }
