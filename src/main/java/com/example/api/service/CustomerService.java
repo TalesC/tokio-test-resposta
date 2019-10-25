@@ -18,12 +18,8 @@ import com.example.api.repository.CustomerRepository;
 @Service
 public class CustomerService {
 
-	private CustomerRepository repository;
-
 	@Autowired
-	public CustomerService(CustomerRepository repository) {
-		this.repository = repository;
-	}
+	private CustomerRepository repository;
 
 	public List<Customer> findAll(Integer page, Integer itens) {
 		Pageable pageItens = PageRequest.of(page, itens);

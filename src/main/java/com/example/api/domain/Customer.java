@@ -23,7 +23,7 @@ public class Customer {
 	@NotEmpty
 	@Email
 	private String email;
-
+	
 	public Long getId() {
 		return id;
 	}
@@ -47,5 +47,5 @@ public class Customer {
 	public void setEmail(String email) {
 		this.email = email;
 	}
-
+	
 }
