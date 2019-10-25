@@ -13,6 +13,9 @@ public class AddressService {
 	
 	@Autowired
 	private AddressRepository repository;
+	
+	@Autowired
+	private CustomerService customerService;
 
 	
 	public List<Address> findAll() {
@@ -20,6 +23,7 @@ public class AddressService {
 	}
 	
 	public List<Address> findByCustomer(Long idCustumer) {
+		customerService.findById(idCustumer);
 		return repository.findByCustomerId(idCustumer);
 	}
 
