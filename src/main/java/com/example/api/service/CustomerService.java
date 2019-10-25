@@ -22,6 +22,9 @@ public class CustomerService {
 	private CustomerRepository repository;
 
 	public List<Customer> findAll(Integer page, Integer itens) {
+		if(page < 0) throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "O numero de páginas não pode ser menor que 0.");
+		if(itens <= 0) throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "O numero de itens não pode ser menor ou igual a 0.");
+		
 		Pageable pageItens = PageRequest.of(page, itens);
 		return repository.findAllByOrderByNameAsc(pageItens);
 	}
