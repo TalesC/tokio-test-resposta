@@ -34,7 +34,7 @@ public class CustomerService {
 				.orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Customer not found"));
 	}
 
-	public Customer save(Customer customer) {
+	public Customer create(Customer customer) {
 		return repository.save(customer);
 	}
 

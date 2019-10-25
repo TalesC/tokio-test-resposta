@@ -51,7 +51,7 @@ public class CustomerController {
 	public ResponseEntity<Customer> create(@Valid @RequestBody Customer customer,
 			HttpServletResponse response) {
 		
-		Customer resposta = service.save(customer);
+		Customer resposta = service.create(customer);
 		
 		URI uri =  ServletUriComponentsBuilder
 				.fromCurrentRequestUri().path("/{id}")
