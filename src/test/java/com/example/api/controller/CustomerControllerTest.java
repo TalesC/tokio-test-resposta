@@ -2,7 +2,9 @@ package com.example.api.controller;
 
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.anyLong;
+import static org.mockito.Mockito.doThrow;
 import static org.mockito.Mockito.when;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.delete;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.put;
@@ -124,7 +126,16 @@ public class CustomerControllerTest {
 		.andExpect(status().isNotFound());
 	}
 	
+	@Test
+	public void deveRetornar200OkQuandoDeletarCustomer() throws Exception {
+		mockMvc.perform(delete("/customers/{id}", 1L)).andExpect(status().isNoContent());
+	}
 	
+	@Test
+	public void deveRetornar404NotFoundQuandoDeletarCustomer() throws Exception {
+		doThrow(new ResponseStatusException(HttpStatus.NOT_FOUND, "...")).when(service).delete(anyLong());
+		mockMvc.perform(delete("/customers/{id}", 1L)).andExpect(status().isNotFound());
+	}
 	
 	private Map<String, String> genHashMap() {
 		Map<String, String> map = new HashMap<String, String>();
