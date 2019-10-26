@@ -1,4 +1,4 @@
-package com.example.api;
+package com.example.api.service;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
